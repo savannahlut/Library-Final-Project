@@ -5,23 +5,31 @@ app = Flask(__name__)
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
-    output = ""  # Default empty output
-    
+    output = ""
+
     if request.method == 'POST':
+        action = request.form.get('action')
+
         try:
-            # Run Java when button is clicked
-            result = subprocess.run(
-                ["java", "Main"], 
-                capture_output=True,
-                text=True,
-                check=True
-            )
-            output = result.stdout.strip() 
+            if action == 'run':
+                result = subprocess.run(["java", "Main"], capture_output=True, text=True, check=True)
+                output = result.stdout.strip()
+
+            elif action == 'author':
+                result = subprocess.run(["java", "Main", "author"], capture_output=True, text=True, check=True)
+                output = result.stdout.strip()
+
+            elif action == 'reset':
+                output = "Output cleared. Ready to run analysis again."
+
+            elif action == 'help':
+                output = "Click buttons to see top author, genre, or other library stats!"
+
         except subprocess.CalledProcessError as e:
             output = f"Java error: {e.stderr}"
         except FileNotFoundError:
-            output = "Java not found. Make sure it is installed and added to PATH."
-    
+            output = "Java not found. Make sure it's installed and added to PATH."
+
     return render_template('index.html', output=output)
 
 if __name__ == '__main__':

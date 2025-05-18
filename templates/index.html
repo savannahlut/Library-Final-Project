@@ -2,59 +2,109 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Library Organizer</title>
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-color: #dfbee5;
+            background-color: #f4f4f4;
             margin: 0;
             padding: 0;
         }
+
         header {
-            background-color: #459da0;
+            background-color: #4CAF50;
             color: white;
             text-align: center;
             padding: 20px;
         }
+
         .container {
             max-width: 600px;
             margin: 50px auto;
             background-color: white;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
-        h1 {
-            font-size: 24px;
+
+        h2 {
+            text-align: center;
+            color: #333;
         }
-        button {
-            padding: 10px 20px;
-            background-color: #459da0;
-            color: rgb(255, 255, 255);
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            font-size: 16px;
+
+        .output-box {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #e8f5e9;
+            border: 1px solid #c8e6c9;
+            border-radius: 5px;
+            color: #2e7d32;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        form {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
             margin-top: 20px;
         }
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            border-radius: 5px;
+            border: none;
+            cursor: pointer;
+        }
+
+        button[name="action"][value="run"] {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        button[name="action"][value="author"] {
+            background-color: #FF9800;
+            color: white;
+        }
+
+        button[name="action"][value="reset"] {
+            background-color: #f44336;
+            color: white;
+        }
+
+        button[name="action"][value="help"] {
+            background-color: #2196F3;
+            color: white;
+        }
+
         button:hover {
-            background-color: #459da0;
+            opacity: 0.9;
         }
     </style>
 </head>
 <body>
 
     <header>
-        <h1>Library Organizer</h1>
+        <h1>📚 Library Organizer</h1>
     </header>
 
     <div class="container">
-        <h2>Most Popular Genre</h2>
-        <p>{{ output }}</p>
+        <h2>Choose an Action</h2>
+
         <form method="POST">
-            <button type="submit">Run Library Analysis</button>
+            <button type="submit" name="action" value="run">Most Read Genre</button>
+            <button type="submit" name="action" value="author">Most Read Author</button>
+            <button type="submit" name="action" value="reset">Reset</button>
+            <button type="submit" name="action" value="help">Help</button>
         </form>
+
+        {% if output %}
+        <div class="output-box">
+            {{ output }}
+        </div>
+        {% endif %}
     </div>
 
 </body>
