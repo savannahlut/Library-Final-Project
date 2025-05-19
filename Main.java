@@ -19,10 +19,12 @@ public class Main {
             catalog.add(b);
         }
 
-        Library BTHS = new Library(catalog, "Mr.Holmer");
+        Library BTHS = new Library(catalog, "Mr. Holmer");
 
         if (args.length > 0 && args[0].equals("author")) {
             System.out.println("Most Read Author: " + BTHS.commonAuthor() );
+        } else if (args.length > 0 && args[0].equals("book")) {
+            System.out.println( BTHS.getLibrarian()); 
         } else {
             System.out.println("Most Popular Genre: " + BTHS.commonGenre() );
         }

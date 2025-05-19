@@ -59,4 +59,7 @@ public class Library{
         findAuthor();
         return commonA;
     }
+    public String getLibrarian(){
+        return librarian;
+    }
 }

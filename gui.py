@@ -25,6 +25,10 @@ def index():
             elif action == 'help':
                 output = "Click buttons to see your library's top authors, genres, or other library stats!"
 
+            elif action == 'books':
+                result = subprocess.run(["java", "Main", "book"], capture_output=True, text=True, check=True)
+                output = result.stdout.strip()
+
         except subprocess.CalledProcessError as e:
             output = f"Java error: {e.stderr}"
         except FileNotFoundError:

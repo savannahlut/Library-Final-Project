@@ -107,5 +107,18 @@
         {% endif %}
     </div>
 
+    <div class="container">
+        <h2>List of Books</h2>
+        <form method="POST">
+            <button type="submit" name="action" value="books">Show All</button>
+        </form>
+
+        {% if output %}
+        <div class="output-box">
+            {{ output }}
+        </div>
+        {% endif %}
+    </div>
+
 </body>
 </html>
