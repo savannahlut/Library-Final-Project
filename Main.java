@@ -26,6 +26,8 @@ public class Main {
         } else {
             System.out.println("Most Popular Genre: " + BTHS.commonGenre() );
         }
+
+        s.close();
     }
 }
 
