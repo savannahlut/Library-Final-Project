@@ -23,7 +23,7 @@ def index():
                 output = "Output cleared. Ready to run analysis again."
 
             elif action == 'help':
-                output = "Click buttons to see top author, genre, or other library stats!"
+                output = "Click buttons to see your library's top authors, genres, or other library stats!"
 
         except subprocess.CalledProcessError as e:
             output = f"Java error: {e.stderr}"
