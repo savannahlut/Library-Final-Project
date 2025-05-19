@@ -24,7 +24,10 @@ public class Main {
         if (args.length > 0 && args[0].equals("author")) {
             System.out.println("Most Read Author: " + BTHS.commonAuthor() );
         } else if (args.length > 0 && args[0].equals("book")) {
-            System.out.println( BTHS.getLibrarian()); 
+            System.out.println(BTHS.getLibrarian()); 
+            for(Book b : catalog){
+                System.out.println(b);
+            }
         } else {
             System.out.println("Most Popular Genre: " + BTHS.commonGenre() );
         }
