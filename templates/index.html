@@ -40,7 +40,14 @@
             border-radius: 5px;
             color: #38ad5b;
             font-weight: bold;
-            text-align: center;
+            text-align: left;
+        }
+
+        .output-box pre {
+            margin: 0;
+            font-family: inherit;
+            white-space: pre-wrap;  /* Allow line breaks */
+            word-break: break-word; /* Prevent long lines from overflowing */
         }
 
         form {
@@ -79,6 +86,11 @@
             color: white;
         }
 
+        button[name="action"][value="books"] {
+            background-color: #5785ad;
+            color: white;
+        }
+
         button:hover {
             opacity: 0.9;
         }
@@ -100,9 +112,9 @@
             <button type="submit" name="action" value="help">Help</button>
         </form>
 
-        {% if output %}
+        {% if output and request.form.get('action') != 'books' %}
         <div class="output-box">
-            {{ output }}
+            <pre>{{ output }}</pre>
         </div>
         {% endif %}
     </div>
@@ -113,9 +125,9 @@
             <button type="submit" name="action" value="books">Show All</button>
         </form>
 
-        {% if output %}
+        {% if output and request.form.get('action') == 'books' %}
         <div class="output-box">
-            {{ output }}
+            <pre>{{ output }}</pre>
         </div>
         {% endif %}
     </div>

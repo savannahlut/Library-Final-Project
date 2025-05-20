@@ -24,7 +24,8 @@ public class Main {
         if (args.length > 0 && args[0].equals("author")) {
             System.out.println("Most Read Author: " + BTHS.commonAuthor() );
         } else if (args.length > 0 && args[0].equals("book")) {
-            System.out.println(BTHS.getLibrarian()); 
+            System.out.println("Librarian: " + BTHS.getLibrarian()); 
+            System.out.println("(These are listed as: Title - Author - Genre )");
             for(Book b : catalog){
                 System.out.println(b);
             }
